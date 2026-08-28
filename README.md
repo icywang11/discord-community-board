@@ -13,6 +13,10 @@
    - 综合表现 Top 3
    - 月度趋势、类型结构、明细表
 
+## 线上预览
+
+GitHub Pages：https://icywang11.github.io/discord-community-board/
+
 ## 本地运行
 
 ```bash
