@@ -29,14 +29,14 @@ export default function HomePage() {
           数据看板
         </h1>
         <p className="relative mt-5 max-w-xl text-center text-sm leading-7 text-foreground/70 sm:text-base">
-          四个社区的活动效果对照本。封面只放总览，点进下一页再选社区；活动名和数字都在，社区真名已经藏起来啦。
+          四个社区的活动效果对照本。人数一律按各场「参与人数」合计，不把浏览、曝光算进去。封面只放总览，点进下一页再选社区。
         </p>
 
         <div className="relative mt-8 grid w-full max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
           {[
             { label: "社区", value: "4" },
             { label: "活动场次", value: String(totalActs) },
-            { label: "参与人次", value: formatNumber(totalPeople) },
+            { label: "参与人数", value: formatNumber(totalPeople) },
             { label: "数据月份", value: "1–9 月" },
           ].map((item) => (
             <div key={item.label} className="rounded-3xl border-2 border-white bg-white/80 px-3 py-4 text-center shadow-sm">

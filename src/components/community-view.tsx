@@ -57,9 +57,9 @@ export function CommunityView({ community }: { community: Community }) {
   const top = topActivities(filtered.length ? filtered : community.activities, 3);
   const kpis = [
     { label: "活动场次", value: String(filtered.length), hint: "当前筛选" },
-    { label: "参与人次", value: formatNumber(sum(filtered, "participants")), hint: "去重人数加总" },
-    { label: "互动量", value: formatNumber(sum(filtered, "engagement")), hint: "评论 / 点击 / 投稿" },
-    { label: "参与率", value: formatPercent(avgRate(filtered)), hint: "参与 ÷ 浏览" },
+    { label: "参与人数", value: formatNumber(sum(filtered, "participants")), hint: "各场参与人数合计，场次间未再去重" },
+    { label: "参与人次", value: formatNumber(sum(filtered, "engagement")), hint: "有记录时用参与人次 / 互动" },
+    { label: "参与率", value: formatPercent(avgRate(filtered)), hint: "参与人数 ÷ 浏览人数" },
   ];
 
   return (
@@ -83,6 +83,15 @@ export function CommunityView({ community }: { community: Community }) {
         </div>
       </section>
 
+      {community.activities.length === 0 ? (
+        <div className="rounded-[2rem] border-2 border-dashed border-rose-200 bg-white/80 px-6 py-16 text-center">
+          <p className="font-display text-2xl text-rose-400">还没有参与人数可统计</p>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-foreground/70">
+            这份社区缺按「参与人数」口径的原始表，所以不展示人数，避免把浏览量、曝光或外部传播量算进来。
+          </p>
+        </div>
+      ) : (
+        <>
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {kpis.map((item) => (
           <div key={item.label} className="rounded-3xl border-2 border-white bg-white/80 px-4 py-4">
@@ -123,7 +132,7 @@ export function CommunityView({ community }: { community: Community }) {
           <div>
             <h2 className="font-display text-2xl text-rose-500">综合表现 Top 3</h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              综合参与率和参与人次打分。人数很大但没人点进去的，会排到转化更好的场次后面。
+              按每场「参与人数」为主、参与率为辅打分。没有人数记录的场次不参与排名。
             </p>
           </div>
           <TopThree activities={top} />
@@ -159,8 +168,8 @@ export function CommunityView({ community }: { community: Community }) {
                     <TableHead>月份</TableHead>
                     <TableHead>活动</TableHead>
                     <TableHead>类型</TableHead>
-                    <TableHead className="text-right">参与</TableHead>
-                    <TableHead className="text-right">互动</TableHead>
+                    <TableHead className="text-right">参与人数</TableHead>
+                    <TableHead className="text-right">参与人次</TableHead>
                     <TableHead className="text-right">参与率</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -206,6 +215,8 @@ export function CommunityView({ community }: { community: Community }) {
           )}
         </TabsContent>
       </Tabs>
+        </>
+      )}
     </div>
   );
 }

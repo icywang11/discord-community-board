@@ -41,7 +41,7 @@ export function buildInsights(community: Community): Insight[] {
     insights.push({
       tone: "good",
       title: `${types[0].name} 是人数引擎`,
-      body: `${types[0].name} 贡献了最多参与人次（${types[0].count} 场）。排期上可以把它做成月度骨架，再用话题讨论和预热填补空档，避免连续两周都上高产出成本的征集。`,
+      body: `${types[0].name} 贡献了最多参与人数（${types[0].count} 场）。排期上可以把它做成月度骨架，再用话题讨论和预热填补空档，避免连续两周都上高产出成本的征集。`,
     });
   }
 

@@ -27,7 +27,7 @@ export function TopThree({ activities }: { activities: Activity[] }) {
           <h3 className="mt-2 line-clamp-2 font-medium leading-6">{item.name}</h3>
           <dl className="mt-4 grid grid-cols-2 gap-2 text-xs">
             <div className="rounded-2xl bg-rose-50 px-3 py-2">
-              <dt className="text-rose-400">参与人次</dt>
+              <dt className="text-rose-400">参与人数</dt>
               <dd className="mt-1 font-display text-lg text-rose-500">{formatNumber(item.participants)}</dd>
             </div>
             <div className="rounded-2xl bg-teal-50 px-3 py-2">

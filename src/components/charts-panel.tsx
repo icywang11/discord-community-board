@@ -35,7 +35,7 @@ export function ParticipantsTrend({ activities }: { activities: Activity[] }) {
   }));
   if (!data.length) return <Empty text="还没有月度数据哦" />;
   const config = {
-    participants: { label: "参与人次", color: "#ff7aa2" },
+    participants: { label: "参与人数", color: "#ff7aa2" },
     count: { label: "场次", color: "#5ec8b8" },
   } satisfies ChartConfig;
   return (
@@ -49,7 +49,7 @@ export function ParticipantsTrend({ activities }: { activities: Activity[] }) {
             <ChartTooltipContent
               formatter={(value, name) => (
                 <div className="flex w-40 justify-between gap-4">
-                  <span>{name === "participants" ? "参与" : "场次"}</span>
+                  <span>{name === "participants" ? "参与人数" : "场次"}</span>
                   <span className="font-mono">{formatNumber(Number(value))}</span>
                 </div>
               )}
