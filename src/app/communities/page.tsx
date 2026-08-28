@@ -9,8 +9,8 @@ export default function CommunitiesPage() {
     <div className="min-h-full">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
-        <p className="font-display text-sm tracking-[0.35em] text-rose-400">PAGE 02</p>
-        <h1 className="mt-2 font-display text-4xl text-rose-500 sm:text-5xl">Discord社区详情</h1>
+        <p className="font-cute text-sm tracking-[0.28em] text-rose-400">PAGE 02</p>
+        <h1 className="mt-2 font-cute text-4xl text-rose-500 sm:text-5xl">Discord社区详情</h1>
         <p className="mt-3 max-w-xl text-sm leading-7 text-foreground/70">
           四个社区入口。点进卡片看场次与人数。
         </p>
@@ -47,6 +47,14 @@ export default function CommunitiesPage() {
               </div>
             </Link>
           ))}
+        </div>
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/tips"
+            className="rounded-full bg-white/80 px-5 py-2 font-cute text-sm text-rose-500 shadow-sm"
+          >
+            翻到第三页 · 运营小提示
+          </Link>
         </div>
       </main>
     </div>

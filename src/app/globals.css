@@ -8,7 +8,9 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-  --font-display: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --font-display: "ZCOOL KuaiLe", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+  --font-cute: "ZCOOL KuaiLe", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-num: "Fredoka", "ZCOOL KuaiLe", "PingFang SC", sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
   --font-heading: var(--font-display);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -93,14 +95,133 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-color: #fff3f7;
     background-image:
-      radial-gradient(circle at 12px 12px, #ffd6e5 1.4px, transparent 1.6px),
-      radial-gradient(1200px 420px at 10% -10%, #ffe3f0 0%, transparent 55%),
-      radial-gradient(900px 380px at 100% 0%, #e8fff8 0%, transparent 50%),
-      radial-gradient(700px 320px at 80% 100%, #f3e8ff 0%, transparent 55%);
-    background-size: 28px 28px, auto, auto, auto;
+      radial-gradient(circle at 11px 11px, #ffc9dc 2.1px, transparent 2.3px),
+      radial-gradient(900px 420px at 8% -8%, #ffe0ef 0%, transparent 58%),
+      radial-gradient(820px 380px at 100% 0%, #d9fff4 0%, transparent 52%),
+      radial-gradient(700px 340px at 78% 100%, #efe4ff 0%, transparent 55%);
+    background-size: 26px 26px, auto, auto, auto;
   }
   .font-display {
     font-family: var(--font-display);
+  }
+  .font-cute {
+    font-family: var(--font-cute);
+  }
+  .font-num {
+    font-family: var(--font-num);
+  }
+}
+
+@font-face {
+  font-family: "ZCOOL KuaiLe";
+  src: url("/fonts/zcool-kuaile.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fredoka";
+  src: url("/fonts/fredoka.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+.bounce-glyph {
+  display: inline-block;
+  animation: bounce-glyph 1.35s ease-in-out infinite;
+}
+
+.sanrio-float {
+  animation: sanrio-float 5.5s ease-in-out infinite;
+}
+
+.sanrio-wiggle {
+  animation: sanrio-wiggle 2.4s ease-in-out infinite;
+}
+
+.sanrio-pulse {
+  animation: sanrio-pulse 1.8s ease-in-out infinite;
+}
+
+.sanrio-spin {
+  animation: sanrio-spin 6s linear infinite;
+}
+
+.sanrio-bounce {
+  animation: sanrio-bounce 2.2s ease-in-out infinite;
+}
+
+@keyframes bounce-glyph {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(-0.22em);
+  }
+  55% {
+    transform: translateY(-0.08em);
+  }
+}
+
+@keyframes sanrio-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes sanrio-wiggle {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes sanrio-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+@keyframes sanrio-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sanrio-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bounce-glyph,
+  .sanrio-float,
+  .sanrio-wiggle,
+  .sanrio-pulse,
+  .sanrio-spin,
+  .sanrio-bounce {
+    animation: none;
   }
 }
