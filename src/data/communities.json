@@ -11,6 +11,7 @@
       "blurb": "日区 / 繁中双社区运营，茶话会与低门槛投票是稳定基本盘。",
       "accent": "pink",
       "mascot": "berry",
+      "size": [{ "label": "社区人数", "value": "3.43万+" }],
       "activities": [
         {
           "id": "a-2026-01-新年压岁钱抽奖-76",
@@ -1263,6 +1264,7 @@
       "blurb": "周常抽奖与积分商城贡献主要参与；节点 H5 和轻点击玩法弹性最大。",
       "accent": "mint",
       "mascot": "mint",
+      "size": [{ "label": "社区人数", "value": "78.18万+" }],
       "activities": [
         {
           "id": "b-2026-02-WeeklyGiveaway-5025",
@@ -2121,6 +2123,10 @@
       "blurb": "国际服与繁中双盘，福利透传和整活创作最能拉高互动。",
       "accent": "grape",
       "mascot": "grape",
+      "size": [
+        { "label": "繁中", "value": "4.81万+" },
+        { "label": "Global", "value": "6.54万+" }
+      ],
       "activities": [
         {
           "id": "c-2026-04-S25新赛季冲分排行榜-33",
@@ -3466,6 +3472,7 @@
       "blurb": "打卡、名片和话题讨论撑起参与人数，高门槛 UGC 转化偏少。",
       "accent": "sun",
       "mascot": "pudding",
+      "size": [{ "label": "社区人数", "value": "64.43万+" }],
       "activities": [
         {
           "id": "d-2026-03-新地图预约活动-223",

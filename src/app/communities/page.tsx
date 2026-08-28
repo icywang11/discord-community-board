@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CommunityName } from "@/components/community-name";
+import { CommunitySize } from "@/components/community-size";
 import { Mascot } from "@/components/mascot";
 import { SiteHeader } from "@/components/site-header";
 import { catalog, avgRate, formatNumber, formatPercent, sum } from "@/lib/catalog";
@@ -28,6 +29,7 @@ export default function CommunitiesPage() {
                   <h2 className="text-3xl text-rose-500">
                     <CommunityName label={item.label} />
                   </h2>
+                  <CommunitySize size={item.size} className="mt-2" />
                   <p className="mt-2 text-sm leading-6 text-foreground/70">{item.blurb}</p>
                   <div className="mt-4 flex flex-wrap gap-3 text-xs">
                     <span className="rounded-full bg-rose-50 px-3 py-1">{item.period}</span>
@@ -53,7 +55,7 @@ export default function CommunitiesPage() {
             href="/tips"
             className="rounded-full bg-white/80 px-5 py-2 font-cute text-sm text-rose-500 shadow-sm"
           >
-            翻到第三页 · 运营小提示
+            点击查看运营提示
           </Link>
         </div>
       </main>

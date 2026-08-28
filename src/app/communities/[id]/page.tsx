@@ -34,7 +34,7 @@ export default async function CommunityPage({ params }: PageProps<"/communities/
           href="/communities"
           className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "mb-4 rounded-full")}
         >
-          ← 返回 Discord社区详情
+          ← 返回社区详情
         </Link>
         <CommunityView community={community} />
       </main>

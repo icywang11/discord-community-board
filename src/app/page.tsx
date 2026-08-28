@@ -42,19 +42,19 @@ export default function HomePage() {
             href="/communities"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "h-12 rounded-full px-7 font-cute text-base",
+              "h-12 rounded-full px-7 text-base",
             )}
           >
-            翻到第二页 · Discord社区详情
+            点击查看社区详情
           </Link>
           <Link
             href="/tips"
             className={cn(
               buttonVariants({ size: "lg", variant: "secondary" }),
-              "h-12 rounded-full px-7 font-cute text-base text-rose-500",
+              "h-12 rounded-full px-7 text-base text-rose-500",
             )}
           >
-            翻到第三页 · 运营小提示
+            点击查看运营提示
           </Link>
         </div>
       </main>

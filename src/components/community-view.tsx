@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { ParticipantsTrend, TypeBars, WeeklyChart } from "@/components/charts-panel";
 import { InsightsPanel } from "@/components/insights-panel";
 import { CommunityName } from "@/components/community-name";
+import { CommunitySize } from "@/components/community-size";
 import { Mascot } from "@/components/mascot";
 import { TopThree } from "@/components/top-three";
 import { Badge } from "@/components/ui/badge";
@@ -72,6 +73,7 @@ export function CommunityView({ community }: { community: Community }) {
             <h1 className="mt-1 text-4xl text-rose-500">
               <CommunityName label={community.label} />
             </h1>
+            <CommunitySize size={community.size} className="mt-2" />
             <p className="mt-2 max-w-2xl text-sm leading-6 text-foreground/70">{community.blurb}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <Badge className="rounded-full bg-rose-100 text-rose-600">{community.period}</Badge>

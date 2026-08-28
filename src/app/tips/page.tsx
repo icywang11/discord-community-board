@@ -49,7 +49,7 @@ export default function TipsPage() {
             href="/communities"
             className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-full px-7 font-cute text-base")}
           >
-            回第二页选社区
+            查看社区详情
           </Link>
         </div>
       </main>

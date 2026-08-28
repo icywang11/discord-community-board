@@ -26,6 +26,11 @@ export type Activity = {
   extra: Record<string, number>;
 };
 
+export type CommunitySize = {
+  label: string;
+  value: string;
+};
+
 export type Community = {
   id: string;
   label: string;
@@ -34,6 +39,7 @@ export type Community = {
   blurb: string;
   accent: "pink" | "mint" | "grape" | "sun";
   mascot: "berry" | "mint" | "grape" | "pudding";
+  size: CommunitySize[];
   activities: Activity[];
   weekly: WeeklyPulse[];
 };
