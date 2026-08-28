@@ -8,7 +8,7 @@ export type Insight = {
 };
 
 function isLowBarrier(item: Activity): boolean {
-  return /投票|Giveaway|抽奖|茶话会|点击|按钮|福利|登录|身份|名片|H5|促充/.test(
+  return /投票|Giveaway|抽奖|茶话会|点击|按钮|福利|登录|身份|名片|H5|促充|打卡|话题/.test(
     `${item.name}${item.type}`,
   );
 }

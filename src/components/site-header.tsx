@@ -14,7 +14,7 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
             封面
           </Link>
           <Link className="rounded-full px-3 py-1.5 hover:bg-mint-50 hover:bg-teal-50" href="/communities">
-            社区 1234
+            Discord社区详情
           </Link>
         </nav>
       </div>

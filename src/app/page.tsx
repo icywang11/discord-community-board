@@ -62,7 +62,7 @@ export default function HomePage() {
             "relative mt-10 h-12 rounded-full px-8 font-display text-base",
           )}
         >
-          翻到第二页 · 社区 1234
+          翻到第二页 · Discord社区详情
         </Link>
       </main>
     </div>

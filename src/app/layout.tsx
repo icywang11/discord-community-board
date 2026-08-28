@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "社区活动数据看板",
-  description: "四个社区的活动效果对照、Top 活动与改进建议。",
+  description: "四个 Discord 社区的活动数据看板。",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
