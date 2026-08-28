@@ -2,9 +2,17 @@ import Link from "next/link";
 import { BounceText } from "@/components/bounce-text";
 import { KpiCloud } from "@/components/kpi-cloud";
 import { SiteHeader } from "@/components/site-header";
-import { buttonVariants } from "@/components/ui/button";
 import { catalog, formatNumber, sum } from "@/lib/catalog";
+import { caseHighlights } from "@/lib/cases";
+import { playbookTips } from "@/lib/playbook";
 import { cn } from "@/lib/utils";
+
+const HIGHLIGHT = {
+  pink: "text-rose-500",
+  mint: "text-teal-600",
+  grape: "text-violet-500",
+  sun: "text-amber-500",
+} as const;
 
 export default function HomePage() {
   const totalActs = catalog.communities.reduce((acc, item) => acc + item.activities.length, 0);
@@ -37,26 +45,46 @@ export default function HomePage() {
           <KpiCloud label="数据月份" value="1–9月" tone="sun" />
         </div>
 
-        <div className="relative mt-12 flex flex-col items-center gap-3 sm:flex-row">
+        <section className="relative mt-12 grid w-full max-w-4xl gap-4 md:grid-cols-3">
           <Link
             href="/communities"
-            className={cn(
-              buttonVariants({ size: "lg" }),
-              "h-12 rounded-full px-7 text-base",
-            )}
+            className="rounded-[2rem] border-[3px] border-white bg-white/80 p-5 shadow-[0_12px_32px_rgba(255,122,162,0.1)] transition hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(255,122,162,0.18)]"
           >
-            点击查看社区详情
+            <p className="font-cute text-xs tracking-[0.2em] text-rose-400">PAGE 02</p>
+            <h2 className="mt-2 font-cute text-2xl text-rose-500">社区详情</h2>
+            <p className="mt-2 text-sm leading-6 text-foreground/65">四个社区的场次、人数和明细表。</p>
+            <p className="mt-4 font-cute text-sm text-rose-500">点进去看 →</p>
           </Link>
+
           <Link
             href="/cases"
-            className={cn(
-              buttonVariants({ size: "lg", variant: "secondary" }),
-              "h-12 rounded-full px-7 text-base text-rose-500",
-            )}
+            className="rounded-[2rem] border-[3px] border-white bg-[#fff8e8] p-5 shadow-[0_12px_32px_rgba(255,122,162,0.1)] transition hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(255,122,162,0.18)]"
           >
-            点击查看代表做法
+            <p className="font-cute text-xs tracking-[0.2em] text-amber-500">PAGE 03</p>
+            <h2 className="mt-2 font-cute text-2xl text-rose-500">代表做法</h2>
+            <p className="mt-2 text-sm leading-6 text-foreground/65">对照数字里最亮的几场，先看倍率再复用。</p>
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              {caseHighlights.map((item) => (
+                <div key={item.id} className="rounded-2xl bg-white/80 px-2 py-2 text-center">
+                  <p className={cn("font-num text-lg leading-none", HIGHLIGHT[item.tone])}>{item.value}</p>
+                  <p className="mt-1 text-[10px] leading-4 text-foreground/50">{item.label}</p>
+                </div>
+              ))}
+            </div>
           </Link>
-        </div>
+
+          <Link
+            href="/tips"
+            className="rounded-[2rem] border-[3px] border-white bg-[#f8f4ff] p-5 shadow-[0_12px_32px_rgba(255,122,162,0.1)] transition hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(255,122,162,0.18)]"
+          >
+            <p className="font-cute text-xs tracking-[0.2em] text-violet-400">PAGE 04</p>
+            <h2 className="mt-2 font-cute text-2xl text-rose-500">运营提示</h2>
+            <p className="mt-2 text-sm leading-6 text-foreground/65">
+              {playbookTips.length} 条排期备忘。先做一键完成，爆款再拆成模板。
+            </p>
+            <p className="mt-4 font-cute text-sm text-violet-500">去看怎么做 →</p>
+          </Link>
+        </section>
       </main>
     </div>
   );

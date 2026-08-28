@@ -50,12 +50,18 @@ export default function CommunitiesPage() {
             </Link>
           ))}
         </div>
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Link
             href="/cases"
             className="rounded-full bg-white/80 px-5 py-2 font-cute text-sm text-rose-500 shadow-sm"
           >
             点击查看代表做法
+          </Link>
+          <Link
+            href="/tips"
+            className="rounded-full bg-white/80 px-5 py-2 font-cute text-sm text-violet-500 shadow-sm"
+          >
+            点击查看运营提示
           </Link>
         </div>
       </main>

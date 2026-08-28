@@ -36,6 +36,13 @@ export const playbookTips: PlaybookTip[] = [
     body: "换卡、集卡、名片打卡会自己把人拉进频道；「请发一篇攻略」常常冷场。能做成收集、站队、接力的，就别做成命题作文。",
   },
   {
+    title: "预热做成 Bot 闯关",
+    tag: "可统计",
+    mascot: "pudding",
+    tone: "sun",
+    body: "社区 D 版本解谜单场 3,948 条消息，情报匣 1,153 次交互、501 人解出。发预热帖只能看浏览；Bot 谜题能记下进度，版更节点优先复用。",
+  },
+  {
     title: "同一套玩法要分轨",
     tag: "分区",
     mascot: "mint",
