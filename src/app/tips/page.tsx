@@ -52,10 +52,10 @@ export default function TipsPage() {
             查看代表做法
           </Link>
           <Link
-            href="/communities"
-            className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-full px-7 font-cute text-base")}
+            href="/optimize"
+            className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-full px-7 text-base")}
           >
-            查看社区详情
+            下一步：数据优化
           </Link>
         </div>
       </main>

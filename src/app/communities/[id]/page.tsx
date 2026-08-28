@@ -37,6 +37,13 @@ export default async function CommunityPage({ params }: PageProps<"/communities/
           ← 返回社区详情
         </Link>
         <CommunityView community={community} />
+        {community.id === "c" ? (
+          <div className="mt-8 flex justify-center">
+            <Link href="/optimize" className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-full px-7 text-base")}>
+              查看数据优化备忘
+            </Link>
+          </div>
+        ) : null}
       </main>
     </div>
   );

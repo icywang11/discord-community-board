@@ -45,7 +45,7 @@ export default function HomePage() {
           <KpiCloud label="数据月份" value="1–9月" tone="sun" />
         </div>
 
-        <section className="relative mt-12 grid w-full max-w-4xl gap-4 md:grid-cols-3">
+        <section className="relative mt-12 grid w-full max-w-4xl gap-4 sm:grid-cols-2">
           <Link
             href="/communities"
             className="rounded-[2rem] border-[3px] border-white bg-white/80 p-5 shadow-[0_12px_32px_rgba(255,122,162,0.1)] transition hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(255,122,162,0.18)]"
@@ -83,6 +83,18 @@ export default function HomePage() {
               {playbookTips.length} 条排期备忘。先做一键完成，爆款再拆成模板。
             </p>
             <p className="mt-4 font-cute text-sm text-violet-500">去看怎么做 →</p>
+          </Link>
+
+          <Link
+            href="/optimize"
+            className="rounded-[2rem] border-[3px] border-white bg-[#eef8ff] p-5 shadow-[0_12px_32px_rgba(255,122,162,0.1)] transition hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(255,122,162,0.18)]"
+          >
+            <p className="font-cute text-xs tracking-[0.2em] text-sky-500">PAGE 05</p>
+            <h2 className="mt-2 font-cute text-2xl text-rose-500">数据优化</h2>
+            <p className="mt-2 text-sm leading-6 text-foreground/65">
+              社区 C 这一盘：数字卡点、改法、目标和别处能借的做法。
+            </p>
+            <p className="mt-4 font-cute text-sm text-sky-500">去看优化备忘 →</p>
           </Link>
         </section>
       </main>

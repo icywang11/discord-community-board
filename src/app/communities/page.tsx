@@ -63,6 +63,12 @@ export default function CommunitiesPage() {
           >
             点击查看运营提示
           </Link>
+          <Link
+            href="/optimize"
+            className="rounded-full bg-white/80 px-5 py-2 font-cute text-sm text-sky-500 shadow-sm"
+          >
+            点击查看数据优化
+          </Link>
         </div>
       </main>
     </div>

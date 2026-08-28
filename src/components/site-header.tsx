@@ -9,7 +9,7 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
           <span className="grid size-8 place-items-center rounded-full bg-rose-100 text-base shadow-sm">♡</span>
           Discord看板
         </Link>
-        <nav className="flex items-center gap-0.5 text-sm sm:gap-1">
+        <nav className="flex flex-wrap items-center justify-end gap-0.5 text-sm sm:gap-1">
           <Link className="rounded-full px-2 py-1.5 hover:bg-rose-50 sm:px-3" href="/">
             封面
           </Link>
@@ -21,6 +21,9 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
           </Link>
           <Link className="rounded-full px-2 py-1.5 hover:bg-violet-50 sm:px-3" href="/tips">
             提示
+          </Link>
+          <Link className="rounded-full px-2 py-1.5 hover:bg-sky-50 sm:px-3" href="/optimize">
+            优化
           </Link>
         </nav>
       </div>
