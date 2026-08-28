@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CommunityName } from "@/components/community-name";
 import { Mascot } from "@/components/mascot";
 import { SiteHeader } from "@/components/site-header";
 import { buttonVariants } from "@/components/ui/button";
@@ -49,7 +50,7 @@ export default function HomePage() {
           {catalog.communities.map((item) => (
             <div key={item.id} className="flex flex-col items-center">
               <Mascot kind={item.mascot} className="size-20" />
-              <span className="mt-1 font-display text-rose-400">{item.label}</span>
+              <CommunityName label={item.label} className="mt-1 text-rose-400" />
             </div>
           ))}
         </div>

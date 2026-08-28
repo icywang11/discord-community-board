@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { ParticipantsTrend, TypeBars, WeeklyChart } from "@/components/charts-panel";
 import { InsightsPanel } from "@/components/insights-panel";
+import { CommunityName } from "@/components/community-name";
 import { Mascot } from "@/components/mascot";
 import { TopThree } from "@/components/top-three";
 import { Badge } from "@/components/ui/badge";
@@ -35,6 +36,7 @@ export function CommunityView({ community }: { community: Community }) {
   const [type, setType] = useState<string>("all");
   const [region, setRegion] = useState<string>("all");
   const [picked, setPicked] = useState<Activity | null>(null);
+  const [tab, setTab] = useState("overview");
 
   const months = unique(community.activities.map((item) => item.month));
   const types = unique(community.activities.map((item) => item.type));
@@ -67,7 +69,9 @@ export function CommunityView({ community }: { community: Community }) {
           <Mascot kind={community.mascot} className="size-28 shrink-0" />
           <div className="min-w-0">
             <p className="text-xs tracking-[0.28em] text-rose-400">{community.kana}</p>
-            <h1 className="mt-1 font-display text-4xl text-rose-500">{community.label}</h1>
+            <h1 className="mt-1 text-4xl text-rose-500">
+              <CommunityName label={community.label} />
+            </h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-foreground/70">{community.blurb}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <Badge className="rounded-full bg-rose-100 text-rose-600">{community.period}</Badge>
@@ -103,15 +107,15 @@ export function CommunityView({ community }: { community: Community }) {
         ) : null}
       </div>
 
-      <Tabs defaultValue="overview">
-        <TabsList className="rounded-full bg-white/80">
-          <TabsTrigger value="overview" className="rounded-full">
+      <Tabs value={tab} onValueChange={setTab}>
+        <TabsList className="h-10 rounded-full bg-white/90 px-1">
+          <TabsTrigger value="overview" className="rounded-full px-4">
             总览
           </TabsTrigger>
-          <TabsTrigger value="dims" className="rounded-full">
+          <TabsTrigger value="dims" className="rounded-full px-4">
             维度
           </TabsTrigger>
-          <TabsTrigger value="table" className="rounded-full">
+          <TabsTrigger value="table" className="rounded-full px-4">
             明细
           </TabsTrigger>
         </TabsList>

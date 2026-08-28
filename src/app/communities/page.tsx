@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CommunityName } from "@/components/community-name";
 import { Mascot } from "@/components/mascot";
 import { SiteHeader } from "@/components/site-header";
 import { catalog, avgRate, formatNumber, formatPercent, sum } from "@/lib/catalog";
@@ -24,7 +25,9 @@ export default function CommunitiesPage() {
                 <Mascot kind={item.mascot} className="size-24 shrink-0" />
                 <div className="min-w-0">
                   <p className="text-xs text-rose-400">0{index + 1} / 04</p>
-                  <h2 className="font-display text-3xl text-rose-500">{item.label}</h2>
+                  <h2 className="text-3xl text-rose-500">
+                    <CommunityName label={item.label} />
+                  </h2>
                   <p className="mt-2 text-sm leading-6 text-foreground/70">{item.blurb}</p>
                   <div className="mt-4 flex flex-wrap gap-3 text-xs">
                     <span className="rounded-full bg-rose-50 px-3 py-1">{item.period}</span>
