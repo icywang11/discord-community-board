@@ -48,13 +48,13 @@ export default function HomePage() {
             点击查看社区详情
           </Link>
           <Link
-            href="/tips"
+            href="/cases"
             className={cn(
               buttonVariants({ size: "lg", variant: "secondary" }),
               "h-12 rounded-full px-7 text-base text-rose-500",
             )}
           >
-            点击查看运营提示
+            点击查看代表做法
           </Link>
         </div>
       </main>

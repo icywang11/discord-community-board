@@ -52,10 +52,10 @@ export default function CommunitiesPage() {
         </div>
         <div className="mt-10 flex justify-center">
           <Link
-            href="/tips"
+            href="/cases"
             className="rounded-full bg-white/80 px-5 py-2 font-cute text-sm text-rose-500 shadow-sm"
           >
-            点击查看运营提示
+            点击查看代表做法
           </Link>
         </div>
       </main>

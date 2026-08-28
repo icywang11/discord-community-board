@@ -17,10 +17,10 @@ export default function TipsPage() {
     <div className="relative min-h-full">
       <SiteHeader />
       <main className="relative z-10 mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
-        <p className="font-cute text-sm tracking-[0.28em] text-rose-400">PAGE 03</p>
+        <p className="font-cute text-sm tracking-[0.28em] text-rose-400">PAGE 04</p>
         <h1 className="mt-2 font-cute text-4xl text-rose-500 sm:text-5xl">今后怎么做</h1>
         <p className="mt-3 max-w-xl text-sm leading-7 text-foreground/70">
-          从四个社区里抽出的共通打法，给排期和复盘当备忘。
+          对照数字在上一页。这里是复用时的排期备忘。
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -44,7 +44,13 @@ export default function TipsPage() {
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <Link
+            href="/cases"
+            className={cn(buttonVariants({ size: "lg", variant: "secondary" }), "h-12 rounded-full px-7 text-base text-rose-500")}
+          >
+            查看代表做法
+          </Link>
           <Link
             href="/communities"
             className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-full px-7 font-cute text-base")}

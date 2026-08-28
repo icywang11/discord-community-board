@@ -16,6 +16,9 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
           <Link className="rounded-full px-2 py-1.5 hover:bg-teal-50 sm:px-3" href="/communities">
             详情
           </Link>
+          <Link className="rounded-full px-2 py-1.5 hover:bg-amber-50 sm:px-3" href="/cases">
+            案例
+          </Link>
           <Link className="rounded-full px-2 py-1.5 hover:bg-violet-50 sm:px-3" href="/tips">
             提示
           </Link>
