@@ -112,6 +112,17 @@
   .font-num {
     font-family: var(--font-num);
   }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-cute);
+    letter-spacing: 0.03em;
+  }
+  .font-cute-ui button,
+  .font-cute-ui label {
+    font-family: var(--font-cute);
+  }
 }
 
 .bounce-glyph {
@@ -135,8 +146,19 @@
   animation: sanrio-spin 6s linear infinite;
 }
 
-.sanrio-bounce {
-  animation: sanrio-bounce 2.2s ease-in-out infinite;
+.card-pop {
+  animation: card-pop 0.55s ease both;
+}
+
+@keyframes card-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes bounce-glyph {
@@ -207,7 +229,8 @@
   .sanrio-wiggle,
   .sanrio-pulse,
   .sanrio-spin,
-  .sanrio-bounce {
+  .sanrio-bounce,
+  .card-pop {
     animation: none;
   }
 }

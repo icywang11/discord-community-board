@@ -92,9 +92,9 @@ export default function HomePage() {
             <p className="font-cute text-xs tracking-[0.2em] text-sky-500">PAGE 05</p>
             <h2 className="mt-2 font-cute text-2xl text-rose-500">数据优化</h2>
             <p className="mt-2 text-sm leading-6 text-foreground/65">
-              社区 C 这一盘：数字卡点、改法、目标和别处能借的做法。
+              社区 C：中奖重复率 57.94% → 34.48%，发放明细可按场次查。
             </p>
-            <p className="mt-4 font-cute text-sm text-sky-500">去看优化备忘 →</p>
+            <p className="mt-4 font-num text-2xl text-sky-500">−23.46pt</p>
           </Link>
         </section>
       </main>
