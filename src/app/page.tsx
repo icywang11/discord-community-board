@@ -80,7 +80,7 @@ export default function HomePage() {
             <p className="font-cute text-xs tracking-[0.2em] text-violet-400">PAGE 04</p>
             <h2 className="mt-2 font-cute text-2xl text-rose-500">运营提示</h2>
             <p className="mt-2 text-sm leading-6 text-foreground/65">
-              {playbookTips.length} 条排期备忘。先做一键完成，爆款再拆成模板。
+              {playbookTips.length} 条排期备忘。社区 C 中奖重复率已从 57.94% 降到 34.48%。
             </p>
             <p className="mt-4 font-cute text-sm text-violet-500">去看怎么做 →</p>
           </Link>

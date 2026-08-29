@@ -239,10 +239,42 @@ export function OptimizeBoard() {
             <div>
               <h2 className="font-cute text-2xl text-amber-500">奖励发放一览</h2>
               <p className="mt-1 text-sm leading-6 text-foreground/65">
-                按场次核对发了多少人次。页顶 {optimizeResult.awards} / {optimizeResult.uniqueWinners}{" "}
-                是统一复盘口径；下表方便点开查每一场。
+                下表按场次核对发了多少。环比用同一口径：重复率 =（发放人次 − 去重人数）÷ 发放人次。
               </p>
             </div>
+          </div>
+          <div className="mb-5 rounded-[1.8rem] border-[3px] border-white bg-[#eef8ff] p-4 sm:p-5">
+            <p className="font-cute text-xs tracking-[0.2em] text-sky-500">中奖重复率环比</p>
+            <div className="mt-3 grid grid-cols-3 gap-2">
+              <div className="rounded-2xl bg-white/90 px-3 py-3 text-center">
+                <p className="font-cute text-[11px] text-violet-400">调优前</p>
+                <p className="font-num mt-1 text-2xl text-violet-500 sm:text-3xl">
+                  {(optimizeResult.repeatBefore * 100).toFixed(2)}%
+                </p>
+                <p className="mt-1 text-[11px] leading-5 text-foreground/50">
+                  {optimizeBefore.awards} 份 / {optimizeBefore.uniqueWinners} 人
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white/90 px-3 py-3 text-center">
+                <p className="font-cute text-[11px] text-rose-400">调优后</p>
+                <p className="font-num mt-1 text-2xl text-rose-500 sm:text-3xl">
+                  {(optimizeResult.repeatAfter * 100).toFixed(2)}%
+                </p>
+                <p className="mt-1 text-[11px] leading-5 text-foreground/50">
+                  {optimizeResult.awards} 人次 / {optimizeResult.uniqueWinners} 人
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white/90 px-3 py-3 text-center">
+                <p className="font-cute text-[11px] text-teal-500">环比</p>
+                <p className="font-num mt-1 text-2xl text-teal-600 sm:text-3xl">−{optimizeResult.pointDrop}pt</p>
+                <p className="mt-1 text-[11px] leading-5 text-foreground/50">
+                  相对 −{(optimizeResult.relativeDrop * 100).toFixed(2)}%
+                </p>
+              </div>
+            </div>
+            <p className="mt-3 text-xs leading-6 text-foreground/60">
+              {optimizeResult.since}策略生效后，发放人次里的重复比例从超过一半降到三分之一出头。名单换血，新面孔才进得来。
+            </p>
           </div>
           <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center">
             <div className="flex gap-2">

@@ -1,9 +1,13 @@
+import { optimizeResult } from "@/lib/optimize";
+
 export type PlaybookTip = {
   title: string;
   body: string;
   tag: string;
   mascot: "berry" | "mint" | "grape" | "pudding";
   tone: "pink" | "mint" | "grape" | "sun";
+  href?: string;
+  hrefLabel?: string;
 };
 
 export const playbookTips: PlaybookTip[] = [
@@ -48,6 +52,15 @@ export const playbookTips: PlaybookTip[] = [
     mascot: "mint",
     tone: "mint",
     body: "日区更吃投票和轻点击，繁中更能撑留言和共创。奖励、题目、完成方式拆开写，比两区共用一份作业省事，也更准。",
+  },
+  {
+    title: "中奖名单要换血",
+    tag: "社区 C 已验证",
+    mascot: "grape",
+    tone: "grape",
+    href: "/optimize",
+    hrefLabel: "去看发放明细和环比 →",
+    body: `社区 C 针对获奖重复度高改了活动设计。${optimizeResult.since}策略生效后，发放 ${optimizeResult.awards} 人次、去重 ${optimizeResult.uniqueWinners} 人，中奖重复率从 ${(optimizeResult.repeatBefore * 100).toFixed(2)}% 降到 ${(optimizeResult.repeatAfter * 100).toFixed(2)}%（-${optimizeResult.pointDrop}pt，相对 -${(optimizeResult.relativeDrop * 100).toFixed(2)}%）。每赛季给未中奖的人一场破冰局，别把奖反复发给熟面孔。`,
   },
   {
     title: "召回别反复吃老本",

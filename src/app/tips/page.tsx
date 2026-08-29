@@ -20,7 +20,7 @@ export default function TipsPage() {
         <p className="font-cute text-sm tracking-[0.28em] text-rose-400">PAGE 04</p>
         <h1 className="mt-2 font-cute text-4xl text-rose-500 sm:text-5xl">今后怎么做</h1>
         <p className="mt-3 max-w-xl text-sm leading-7 text-foreground/70">
-          对照数字在上一页。这里是复用时的排期备忘。
+          对照数字在案例页。社区 C 已经把中奖重复率从 57.94% 降到 34.48%，排期时优先复用能换血的玩法。
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -38,6 +38,11 @@ export default function TipsPage() {
                   <p className="font-cute text-xs text-rose-400">♡ {tip.tag}</p>
                   <h2 className="mt-1 font-cute text-2xl text-rose-500">{tip.title}</h2>
                   <p className="mt-2 text-sm leading-7 text-foreground/75">{tip.body}</p>
+                  {tip.href ? (
+                    <Link href={tip.href} className="mt-3 inline-block text-sm text-rose-500 underline-offset-4 hover:underline">
+                      {tip.hrefLabel ?? "去看明细 →"}
+                    </Link>
+                  ) : null}
                 </div>
               </div>
             </article>
