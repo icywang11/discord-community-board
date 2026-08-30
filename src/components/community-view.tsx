@@ -57,6 +57,7 @@ export function CommunityView({ community }: { community: Community }) {
 
   const insights = useMemo(() => buildInsights({ ...community, activities: filtered.length ? filtered : community.activities }), [community, filtered]);
   const top = topActivities(filtered.length ? filtered : community.activities, 3);
+  const narrowed = month !== "all" || type !== "all" || region !== "all" || Boolean(query.trim());
   const kpis = [
     { label: "活动场次", value: String(filtered.length), hint: "当前筛选" },
     { label: "参与人数", value: formatNumber(sum(filtered, "participants")), hint: "各场参与人数合计，场次间未再去重" },
@@ -119,6 +120,15 @@ export function CommunityView({ community }: { community: Community }) {
         ) : null}
       </div>
 
+      {community.id === "d" && !narrowed ? <CommunityDWeek /> : null}
+      {narrowed ? (
+        <FilteredList
+          activities={filtered}
+          picked={picked}
+          onPick={setPicked}
+        />
+      ) : null}
+
       <Tabs value={tab} onValueChange={setTab}>
         <TabsList className="h-10 rounded-full bg-white/90 px-1">
           <TabsTrigger value="overview" className="rounded-full px-4">
@@ -132,7 +142,6 @@ export function CommunityView({ community }: { community: Community }) {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="flex flex-col gap-5 pt-4">
-          {community.id === "d" ? <CommunityDWeek /> : null}
           <div>
             <h2 className="font-display text-2xl text-rose-500">综合表现 Top 3</h2>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -222,6 +231,55 @@ export function CommunityView({ community }: { community: Community }) {
         </>
       )}
     </div>
+  );
+}
+
+function FilteredList({
+  activities,
+  picked,
+  onPick,
+}: {
+  activities: Activity[];
+  picked: Activity | null;
+  onPick: (item: Activity | null) => void;
+}) {
+  if (!activities.length) {
+    return (
+      <div className="rounded-[2rem] border-2 border-dashed border-rose-200 bg-white/80 px-6 py-10 text-center text-sm text-rose-400">
+        没有符合筛选的活动，点一下「全部」再看看。
+      </div>
+    );
+  }
+  return (
+    <section className="rounded-[2rem] border-2 border-white bg-white/80 p-4 sm:p-5">
+      <p className="font-cute text-xs tracking-[0.2em] text-rose-400">当前筛选 · {activities.length} 场</p>
+      <h2 className="mt-1 font-display text-2xl text-rose-500">这几场活动</h2>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        {activities.map((item) => {
+          const open = picked?.id === item.id;
+          return (
+            <article
+              key={item.id}
+              className="cursor-pointer rounded-[1.5rem] bg-rose-50/80 px-4 py-3"
+              onClick={() => onPick(open ? null : item)}
+            >
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="font-medium leading-6 text-foreground/85">{item.name}</h3>
+                <p className="shrink-0 font-display text-lg text-rose-500">{formatNumber(item.participants)}</p>
+              </div>
+              <p className="mt-1 text-[11px] text-foreground/45">
+                {item.type} · {item.period || monthLabel(item.month)}
+              </p>
+              {open ? (
+                <p className="mt-2 text-sm leading-6 text-foreground/70">
+                  {item.note || "这场没有留下文字小结，只保留了数字。"}
+                </p>
+              ) : null}
+            </article>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 
