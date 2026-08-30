@@ -32,21 +32,21 @@ export default async function CommunityPage({ params }: PageProps<"/communities/
       <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-10">
         <Link
           href="/communities"
-          className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "mb-4 rounded-full")}
+          className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "mb-4")}
         >
           ← 返回社区详情
         </Link>
         <CommunityView community={community} />
         {community.id === "c" ? (
           <div className="mt-8 flex justify-center">
-            <Link href="/optimize" className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-full px-7 text-base")}>
+            <Link href="/optimize" className={cn(buttonVariants({ size: "lg" }), "h-11 px-6")}>
               查看数据优化备忘
             </Link>
           </div>
         ) : null}
         {community.id === "d" ? (
           <div className="mt-8 flex justify-center">
-            <Link href="/cases" className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-full px-7 text-base")}>
+            <Link href="/cases" className={cn(buttonVariants({ size: "lg" }), "h-11 px-6")}>
               查看社区 D 的对照数字
             </Link>
           </div>

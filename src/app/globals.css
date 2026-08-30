@@ -7,10 +7,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-  --font-display: "ZCOOL KuaiLe", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
-  --font-cute: "ZCOOL KuaiLe", "PingFang SC", "Hiragino Sans GB", sans-serif;
-  --font-num: "Fredoka", "ZCOOL KuaiLe", "PingFang SC", sans-serif;
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  --font-display: "Cormorant Garamond", "Noto Serif SC", "Songti SC", "STSong", "Times New Roman", serif;
+  --font-cute: "Cormorant Garamond", "Noto Serif SC", "Songti SC", "STSong", serif;
+  --font-num: "Cormorant Garamond", "Noto Serif SC", "Times New Roman", serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
   --font-heading: var(--font-display);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -42,48 +42,48 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.8);
-  --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) * 1.3);
-  --radius-xl: calc(var(--radius) * 1.8);
-  --radius-2xl: calc(var(--radius) * 2.2);
-  --radius-3xl: calc(var(--radius) * 2.8);
-  --radius-4xl: calc(var(--radius) * 3.2);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 16px;
+  --radius-3xl: 18px;
+  --radius-4xl: 20px;
 }
 
 :root {
-  --background: #fff4f7;
-  --foreground: #4a3040;
+  --background: #f3f2ee;
+  --foreground: #1a1a1a;
   --card: #ffffff;
-  --card-foreground: #4a3040;
+  --card-foreground: #1a1a1a;
   --popover: #ffffff;
-  --popover-foreground: #4a3040;
-  --primary: #ff7aa2;
-  --primary-foreground: #fff8fb;
-  --secondary: #ffe3ee;
-  --secondary-foreground: #8a4a62;
-  --muted: #fff0f5;
-  --muted-foreground: #9a7384;
-  --accent: #e8fff8;
-  --accent-foreground: #3f7a72;
-  --destructive: oklch(0.65 0.18 22);
-  --border: #ffd6e5;
-  --input: #ffd6e5;
-  --ring: #ff7aa2;
-  --chart-1: #ff7aa2;
-  --chart-2: #5ec8b8;
-  --chart-3: #a78bfa;
-  --chart-4: #f5b942;
-  --chart-5: #7eb6ff;
-  --radius: 1rem;
-  --sidebar: #fff8fb;
-  --sidebar-foreground: #4a3040;
-  --sidebar-primary: #ff7aa2;
-  --sidebar-primary-foreground: #fff8fb;
-  --sidebar-accent: #ffe3ee;
-  --sidebar-accent-foreground: #8a4a62;
-  --sidebar-border: #ffd6e5;
-  --sidebar-ring: #ff7aa2;
+  --popover-foreground: #1a1a1a;
+  --primary: #1a1a1a;
+  --primary-foreground: #f7f6f2;
+  --secondary: #eceae4;
+  --secondary-foreground: #1a1a1a;
+  --muted: #eceae4;
+  --muted-foreground: #7a776f;
+  --accent: #eceae4;
+  --accent-foreground: #1a1a1a;
+  --destructive: oklch(0.55 0.16 22);
+  --border: #ddd9d0;
+  --input: #ddd9d0;
+  --ring: #1a1a1a;
+  --chart-1: #1a1a1a;
+  --chart-2: #6f6b64;
+  --chart-3: #a39e94;
+  --chart-4: #c8c3b8;
+  --chart-5: #8a8680;
+  --radius: 0.75rem;
+  --sidebar: #f7f6f2;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #1a1a1a;
+  --sidebar-primary-foreground: #f7f6f2;
+  --sidebar-accent: #eceae4;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #ddd9d0;
+  --sidebar-ring: #1a1a1a;
 }
 
 @layer base {
@@ -94,56 +94,49 @@
     @apply font-sans;
   }
   body {
-    @apply bg-background text-foreground;
-    background-color: #fff3f7;
-    background-image:
-      radial-gradient(circle at 11px 11px, #ffc9dc 2.1px, transparent 2.3px),
-      radial-gradient(900px 420px at 8% -8%, #ffe0ef 0%, transparent 58%),
-      radial-gradient(820px 380px at 100% 0%, #d9fff4 0%, transparent 52%),
-      radial-gradient(700px 340px at 78% 100%, #efe4ff 0%, transparent 55%);
-    background-size: 26px 26px, auto, auto, auto;
+    @apply bg-background text-foreground antialiased;
+    background-color: #f3f2ee;
+    background-image: radial-gradient(#d8d4cb 0.9px, transparent 1px);
+    background-size: 22px 22px;
   }
   .font-display {
     font-family: var(--font-display);
+    font-weight: 500;
   }
   .font-cute {
     font-family: var(--font-cute);
+    font-weight: 500;
   }
   .font-num {
     font-family: var(--font-num);
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-cute);
-    letter-spacing: 0.03em;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
-  .font-cute-ui button,
-  .font-cute-ui label {
-    font-family: var(--font-cute);
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+  .card-editorial {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(26, 26, 26, 0.04);
   }
 }
 
 .bounce-glyph {
-  display: inline-block;
-  animation: bounce-glyph 1.35s ease-in-out infinite;
-}
-
-.sanrio-float {
-  animation: sanrio-float 5.5s ease-in-out infinite;
-}
-
-.sanrio-wiggle {
-  animation: sanrio-wiggle 2.4s ease-in-out infinite;
-}
-
-.sanrio-pulse {
-  animation: sanrio-pulse 1.8s ease-in-out infinite;
-}
-
-.sanrio-spin {
-  animation: sanrio-spin 6s linear infinite;
+  display: inline;
 }
 
 .card-pop {
@@ -153,83 +146,15 @@
 @keyframes card-pop {
   from {
     opacity: 0;
-    transform: translateY(10px) scale(0.96);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes bounce-glyph {
-  0%,
-  100% {
     transform: translateY(0);
-  }
-  35% {
-    transform: translateY(-0.22em);
-  }
-  55% {
-    transform: translateY(-0.08em);
-  }
-}
-
-@keyframes sanrio-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-14px);
-  }
-}
-
-@keyframes sanrio-wiggle {
-  0%,
-  100% {
-    transform: rotate(-8deg);
-  }
-  50% {
-    transform: rotate(8deg);
-  }
-}
-
-@keyframes sanrio-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.18);
-  }
-}
-
-@keyframes sanrio-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes sanrio-bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bounce-glyph,
-  .sanrio-float,
-  .sanrio-wiggle,
-  .sanrio-pulse,
-  .sanrio-spin,
-  .sanrio-bounce,
   .card-pop {
     animation: none;
   }

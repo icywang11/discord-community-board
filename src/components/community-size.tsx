@@ -14,7 +14,7 @@ export function CommunitySize({
       {size.map((item) => (
         <span
           key={`${item.label}-${item.value}`}
-          className="rounded-full bg-white px-3 py-1 text-sm font-medium text-rose-500 shadow-sm"
+          className="rounded-full border border-border bg-white px-3 py-1 text-sm text-foreground"
         >
           {item.label} {item.value}
         </span>

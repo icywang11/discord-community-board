@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SanrioScene } from "@/components/sanrio-scene";
+import { PaperGrid } from "@/components/paper-grid";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
@@ -16,19 +16,28 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="relative min-h-full flex flex-col">
         <style>{`
           @font-face {
-            font-family: "ZCOOL KuaiLe";
-            src: url("${fontBase}/fonts/zcool-kuaile.woff2") format("woff2");
-            font-weight: 400;
+            font-family: "Cormorant Garamond";
+            src: url("${fontBase}/fonts/cormorant-600.woff2") format("woff2");
+            font-weight: 500 700;
+            font-style: normal;
             font-display: swap;
           }
           @font-face {
-            font-family: "Fredoka";
-            src: url("${fontBase}/fonts/fredoka.woff2") format("woff2");
+            font-family: "Cormorant Garamond";
+            src: url("${fontBase}/fonts/cormorant-500-italic.woff2") format("woff2");
             font-weight: 500;
+            font-style: italic;
+            font-display: swap;
+          }
+          @font-face {
+            font-family: "Noto Serif SC";
+            src: url("${fontBase}/fonts/noto-serif-sc-400.woff2") format("woff2");
+            font-weight: 400 600;
+            font-style: normal;
             font-display: swap;
           }
         `}</style>
-        <SanrioScene />
+        <PaperGrid />
         <div className="relative z-10 flex min-h-full flex-1 flex-col">
           <TooltipProvider>{children}</TooltipProvider>
         </div>

@@ -58,6 +58,12 @@ export function CommunityView({ community }: { community: Community }) {
   const insights = useMemo(() => buildInsights({ ...community, activities: filtered.length ? filtered : community.activities }), [community, filtered]);
   const top = topActivities(filtered.length ? filtered : community.activities, 3);
   const narrowed = month !== "all" || type !== "all" || region !== "all" || Boolean(query.trim());
+  const showDWeek =
+    community.id === "d" &&
+    (month === "all" || month === "2026-08") &&
+    type === "all" &&
+    region === "all" &&
+    !query.trim();
   const kpis = [
     { label: "活动场次", value: String(filtered.length), hint: "当前筛选" },
     { label: "参与人数", value: formatNumber(sum(filtered, "participants")), hint: "各场参与人数合计，场次间未再去重" },
@@ -67,18 +73,18 @@ export function CommunityView({ community }: { community: Community }) {
 
   return (
     <div data-accent={community.accent} className="flex flex-col gap-6">
-      <section className="overflow-hidden rounded-[2rem] border-2 border-white bg-white/80 p-5 shadow-[0_12px_40px_rgba(255,122,162,0.12)] sm:p-7">
+      <section className="card-editorial p-6 sm:p-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-          <Mascot kind={community.mascot} className="size-28 shrink-0" />
+          <Mascot kind={community.mascot} className="size-20 shrink-0 sm:size-24" />
           <div className="min-w-0">
-            <p className="text-xs tracking-[0.28em] text-rose-400">{community.kana}</p>
-            <h1 className="mt-1 text-4xl text-rose-500">
+            <p className="kicker">{community.kana}</p>
+            <h1 className="mt-2 text-4xl sm:text-5xl">
               <CommunityName label={community.label} />
             </h1>
-            <CommunitySize size={community.size} className="mt-2" />
-            <p className="mt-2 max-w-2xl text-sm leading-6 text-foreground/70">{community.blurb}</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              <Badge className="rounded-full bg-rose-100 text-rose-600">{community.period}</Badge>
+            <CommunitySize size={community.size} className="mt-3" />
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">{community.blurb}</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Badge className="rounded-full bg-foreground text-background">{community.period}</Badge>
               <Badge variant="secondary" className="rounded-full">
                 {community.activities.length} 场活动
               </Badge>
@@ -88,8 +94,8 @@ export function CommunityView({ community }: { community: Community }) {
       </section>
 
       {community.activities.length === 0 ? (
-        <div className="rounded-[2rem] border-2 border-dashed border-rose-200 bg-white/80 px-6 py-16 text-center">
-          <p className="font-display text-2xl text-rose-400">还没有参与人数可统计</p>
+        <div className="rounded-xl border border-dashed border-border bg-white px-6 py-16 text-center">
+          <p className="font-display text-2xl text-muted-foreground">还没有参与人数可统计</p>
           <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-foreground/70">
             这份社区缺按「参与人数」口径的原始表，所以不展示人数，避免把浏览量、曝光或外部传播量算进来。
           </p>
@@ -98,15 +104,15 @@ export function CommunityView({ community }: { community: Community }) {
         <>
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {kpis.map((item) => (
-          <div key={item.label} className="rounded-3xl border-2 border-white bg-white/80 px-4 py-4">
-            <p className="text-xs text-rose-400">{item.label}</p>
-            <p className="mt-1 font-display text-2xl text-rose-500">{item.value}</p>
+          <div key={item.label} className="card-editorial px-4 py-4">
+            <p className="kicker">{item.label}</p>
+            <p className="mt-2 font-num text-2xl">{item.value}</p>
             <p className="mt-1 text-[11px] text-muted-foreground">{item.hint}</p>
           </div>
         ))}
       </div>
 
-      <div className="flex flex-col gap-3 rounded-3xl border-2 border-white bg-white/70 p-4">
+      <div className="card-editorial flex flex-col gap-3 p-4">
         <Input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -120,7 +126,7 @@ export function CommunityView({ community }: { community: Community }) {
         ) : null}
       </div>
 
-      {community.id === "d" && !narrowed ? <CommunityDWeek /> : null}
+      {showDWeek ? <CommunityDWeek /> : null}
       {narrowed ? (
         <FilteredList
           activities={filtered}
@@ -130,7 +136,7 @@ export function CommunityView({ community }: { community: Community }) {
       ) : null}
 
       <Tabs value={tab} onValueChange={setTab}>
-        <TabsList className="h-10 rounded-full bg-white/90 px-1">
+        <TabsList className="h-10 rounded-full bg-white px-1">
           <TabsTrigger value="overview" className="rounded-full px-4">
             总览
           </TabsTrigger>
@@ -143,14 +149,14 @@ export function CommunityView({ community }: { community: Community }) {
         </TabsList>
         <TabsContent value="overview" className="flex flex-col gap-5 pt-4">
           <div>
-            <h2 className="font-display text-2xl text-rose-500">综合表现 Top 3</h2>
+            <h2 className="font-display text-2xl">综合表现 Top 3</h2>
             <p className="mt-1 text-sm text-muted-foreground">
               按每场「参与人数」为主、参与率为辅打分。没有人数记录的场次不参与排名。
             </p>
           </div>
           <TopThree activities={top} />
           <div>
-            <h2 className="font-display text-2xl text-rose-500">可以这样改</h2>
+            <h2 className="font-display text-2xl">可以这样改</h2>
             <p className="mt-1 mb-3 text-sm text-muted-foreground">根据当前筛选里的结构自动归纳，给排期和玩法复用当备忘。</p>
             <InsightsPanel insights={insights} />
           </div>
@@ -171,9 +177,9 @@ export function CommunityView({ community }: { community: Community }) {
           ) : null}
         </TabsContent>
         <TabsContent value="table" className="pt-4">
-          <div className="overflow-hidden rounded-3xl border-2 border-white bg-white/80">
+          <div className="card-editorial overflow-hidden">
             {filtered.length === 0 ? (
-              <div className="p-10 text-center text-sm text-rose-400">没有符合筛选的活动，点一下「全部」再看看。</div>
+              <div className="p-10 text-center text-sm text-muted-foreground">没有符合筛选的活动，点一下「全部」再看看。</div>
             ) : (
               <Table>
                 <TableHeader>
@@ -209,11 +215,11 @@ export function CommunityView({ community }: { community: Community }) {
             )}
           </div>
           {picked ? (
-            <div className="mt-4 rounded-3xl border-2 border-rose-100 bg-white p-5">
+            <div className="card-editorial mt-4 p-5">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-xs text-rose-400">活动复盘</p>
-                  <h3 className="mt-1 font-display text-xl text-rose-500">{picked.name}</h3>
+                  <p className="kicker">活动复盘</p>
+                  <h3 className="mt-2 font-display text-xl">{picked.name}</h3>
                 </div>
                 <Button size="sm" variant="outline" className="rounded-full" onClick={() => setPicked(null)}>
                   收起
@@ -245,27 +251,27 @@ function FilteredList({
 }) {
   if (!activities.length) {
     return (
-      <div className="rounded-[2rem] border-2 border-dashed border-rose-200 bg-white/80 px-6 py-10 text-center text-sm text-rose-400">
+      <div className="rounded-xl border border-dashed border-border bg-white px-6 py-10 text-center text-sm text-muted-foreground">
         没有符合筛选的活动，点一下「全部」再看看。
       </div>
     );
   }
   return (
-    <section className="rounded-[2rem] border-2 border-white bg-white/80 p-4 sm:p-5">
-      <p className="font-cute text-xs tracking-[0.2em] text-rose-400">当前筛选 · {activities.length} 场</p>
-      <h2 className="mt-1 font-display text-2xl text-rose-500">这几场活动</h2>
+    <section className="card-editorial p-5 sm:p-6">
+      <p className="kicker">当前筛选 · {activities.length} 场</p>
+      <h2 className="mt-2 font-display text-2xl">这几场活动</h2>
       <div className="mt-4 grid gap-3 md:grid-cols-2">
         {activities.map((item) => {
           const open = picked?.id === item.id;
           return (
             <article
               key={item.id}
-              className="cursor-pointer rounded-[1.5rem] bg-rose-50/80 px-4 py-3"
+              className="cursor-pointer rounded-lg bg-[#f7f6f2] px-4 py-3"
               onClick={() => onPick(open ? null : item)}
             >
               <div className="flex items-baseline justify-between gap-3">
-                <h3 className="font-medium leading-6 text-foreground/85">{item.name}</h3>
-                <p className="shrink-0 font-display text-lg text-rose-500">{formatNumber(item.participants)}</p>
+                <h3 className="font-medium leading-6">{item.name}</h3>
+                <p className="shrink-0 font-num text-lg">{formatNumber(item.participants)}</p>
               </div>
               <p className="mt-1 text-[11px] text-foreground/45">
                 {item.type} · {item.period || monthLabel(item.month)}
@@ -293,8 +299,8 @@ function Panel({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-3xl border-2 border-white bg-white/80 p-4">
-      <h3 className="font-display text-lg text-rose-500">{title}</h3>
+    <section className="card-editorial p-4">
+      <h3 className="font-display text-lg">{title}</h3>
       <p className="mb-2 text-xs text-muted-foreground">{subtitle}</p>
       {children}
     </section>

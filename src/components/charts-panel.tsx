@@ -20,11 +20,11 @@ import { formatNumber, monthLabel } from "@/lib/catalog";
 import type { Activity, WeeklyPulse } from "@/lib/types";
 import { groupBy, monthlySeries } from "@/lib/catalog";
 
-const PASTEL = ["#ff7aa2", "#5ec8b8", "#a78bfa", "#f5b942", "#7eb6ff", "#ff9e80"];
+const PASTEL = ["#1a1a1a", "#6f6b64", "#a39e94", "#c8c3b8", "#8a8680", "#4a4742"];
 
 function Empty({ text }: { text: string }) {
   return (
-    <div className="grid h-48 place-items-center text-sm text-rose-400/80">{text}</div>
+    <div className="grid h-48 place-items-center text-sm text-muted-foreground">{text}</div>
   );
 }
 
@@ -35,13 +35,13 @@ export function ParticipantsTrend({ activities }: { activities: Activity[] }) {
   }));
   if (!data.length) return <Empty text="还没有月度数据哦" />;
   const config = {
-    participants: { label: "参与人数", color: "#ff7aa2" },
-    count: { label: "场次", color: "#5ec8b8" },
+        participants: { label: "参与人数", color: "#1a1a1a" },
+        count: { label: "场次", color: "#8a8680" },
   } satisfies ChartConfig;
   return (
     <ChartContainer config={config} className="aspect-auto h-60 w-full">
       <AreaChart data={data} margin={{ left: 8, right: 8, top: 8 }}>
-        <CartesianGrid vertical={false} stroke="#ffd6e7" />
+        <CartesianGrid vertical={false} stroke="#e6e2d9" />
         <XAxis dataKey="label" tickLine={false} axisLine={false} />
         <YAxis tickLine={false} axisLine={false} width={44} tickFormatter={(v) => formatNumber(Number(v))} />
         <ChartTooltip
@@ -56,7 +56,7 @@ export function ParticipantsTrend({ activities }: { activities: Activity[] }) {
             />
           }
         />
-        <Area dataKey="participants" type="monotone" fill="#ffd6e7" stroke="#ff7aa2" strokeWidth={2} />
+        <Area dataKey="participants" type="monotone" fill="#eceae4" stroke="#1a1a1a" strokeWidth={1.6} />
       </AreaChart>
     </ChartContainer>
   );
@@ -65,11 +65,11 @@ export function ParticipantsTrend({ activities }: { activities: Activity[] }) {
 export function TypeBars({ activities }: { activities: Activity[] }) {
   const data = groupBy(activities, "type").slice(0, 7);
   if (!data.length) return <Empty text="还没有类型数据哦" />;
-  const config = { value: { label: "参与", color: "#5ec8b8" } } satisfies ChartConfig;
+  const config = { value: { label: "参与", color: "#1a1a1a" } } satisfies ChartConfig;
   return (
     <ChartContainer config={config} className="aspect-auto h-60 w-full">
       <BarChart data={data} layout="vertical" margin={{ left: 8, right: 12 }}>
-        <CartesianGrid horizontal={false} stroke="#d7f3ee" />
+        <CartesianGrid horizontal={false} stroke="#e6e2d9" />
         <XAxis type="number" hide />
         <YAxis type="category" dataKey="name" width={88} tickLine={false} axisLine={false} />
         <ChartTooltip
@@ -96,18 +96,18 @@ export function WeeklyChart({ weekly }: { weekly: WeeklyPulse[] }) {
   }));
   if (!data.length) return <Empty text="这个社区还没有周活曲线" />;
   const config = {
-    messages: { label: "周消息", color: "#a78bfa" },
-    visitors: { label: "周访客", color: "#f5b942" },
+    messages: { label: "周消息", color: "#1a1a1a" },
+    visitors: { label: "周访客", color: "#8a8680" },
   } satisfies ChartConfig;
   return (
     <ChartContainer config={config} className="aspect-auto h-60 w-full">
       <AreaChart data={data} margin={{ left: 8, right: 8, top: 8 }}>
-        <CartesianGrid vertical={false} stroke="#eadfff" />
+        <CartesianGrid vertical={false} stroke="#e6e2d9" />
         <XAxis dataKey="label" tickLine={false} axisLine={false} interval={2} />
         <YAxis tickLine={false} axisLine={false} width={44} tickFormatter={(v) => formatNumber(Number(v))} />
         <ChartTooltip content={<ChartTooltipContent />} />
-        <Area dataKey="messages" type="monotone" stroke="#a78bfa" fill="#eadfff" strokeWidth={2} />
-        <Area dataKey="visitors" type="monotone" stroke="#f5b942" fill="#ffe9b8" strokeWidth={2} />
+        <Area dataKey="messages" type="monotone" stroke="#1a1a1a" fill="#eceae4" strokeWidth={1.6} />
+        <Area dataKey="visitors" type="monotone" stroke="#8a8680" fill="#f3f2ee" strokeWidth={1.6} />
       </AreaChart>
     </ChartContainer>
   );

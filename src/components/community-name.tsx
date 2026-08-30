@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** Keep A–D in a readable rounded sans so the cute display font does not turn B/D into lookalikes. */
+/** Keep A–D in a readable sans so the serif display font does not turn B/D into lookalikes. */
 export function CommunityName({
   label,
   className,
