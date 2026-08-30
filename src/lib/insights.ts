@@ -23,6 +23,21 @@ export function buildInsights(community: Community): Insight[] {
   const acts = community.activities;
   if (!acts.length) return [];
   const insights: Insight[] = [];
+
+  if (community.id === "d") {
+    insights.push(
+      {
+        tone: "good",
+        title: "最新一周：情报匣看交互，倒霉日记看人数",
+        body: "8.17–8.23 倒霉日记人数 +40.2%、消息 +86.1%；情报匣交互从 273 拉到 1,153（成功率 43.45%，曝光 6,150）。日常活动看人数，解谜活动看交互和成功率，别混在一张表里比场均。",
+      },
+      {
+        tone: "idea",
+        title: "裂变先数主动发链接",
+        body: "H5 集换卡 919 人里，93.7% 是自己把活动链接发出去的，不是运营去拉。求转发不如把换卡摊开；里程碑活动优先记「主动传播」，别只数进频道的人。",
+      },
+    );
+  }
   const low = acts.filter(isLowBarrier);
   const high = acts.filter(isHighBarrier);
   const lowAvg = low.length ? sum(low, "participants") / low.length : 0;

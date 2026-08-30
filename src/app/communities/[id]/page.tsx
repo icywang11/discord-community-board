@@ -44,6 +44,13 @@ export default async function CommunityPage({ params }: PageProps<"/communities/
             </Link>
           </div>
         ) : null}
+        {community.id === "d" ? (
+          <div className="mt-8 flex justify-center">
+            <Link href="/cases" className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-full px-7 text-base")}>
+              查看社区 D 的对照数字
+            </Link>
+          </div>
+        ) : null}
       </main>
     </div>
   );

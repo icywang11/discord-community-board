@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { ParticipantsTrend, TypeBars, WeeklyChart } from "@/components/charts-panel";
 import { InsightsPanel } from "@/components/insights-panel";
+import { CommunityDWeek } from "@/components/community-d-week";
 import { CommunityName } from "@/components/community-name";
 import { CommunitySize } from "@/components/community-size";
 import { Mascot } from "@/components/mascot";
@@ -131,6 +132,7 @@ export function CommunityView({ community }: { community: Community }) {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="flex flex-col gap-5 pt-4">
+          {community.id === "d" ? <CommunityDWeek /> : null}
           <div>
             <h2 className="font-display text-2xl text-rose-500">综合表现 Top 3</h2>
             <p className="mt-1 text-sm text-muted-foreground">
