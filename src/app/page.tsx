@@ -56,13 +56,13 @@ export default function HomePage() {
             </p>
           </Link>
 
-          <Link href="/cases" className="card-editorial group grid grid-cols-[1.1fr_0.9fr] overflow-hidden">
+          <Link href="/cases" className="card-editorial group grid overflow-hidden md:grid-cols-[1.1fr_0.9fr]">
             <div className="p-6 sm:p-8">
               <p className="kicker">Page 03</p>
               <h2 className="mt-4 font-display text-3xl">代表做法</h2>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">对照数字里最亮的几场，先看倍率再复用。</p>
             </div>
-            <div className="grid grid-cols-2 border-l border-border bg-[#f7f6f2]">
+            <div className="grid grid-cols-2 border-t border-border bg-[#f7f6f2] md:border-l md:border-t-0">
               {caseHighlights.map((item) => (
                 <div key={item.id} className="flex flex-col justify-center border-b border-r border-border px-3 py-4 last:border-b-0 [&:nth-child(2)]:border-r-0 [&:nth-child(4)]:border-r-0">
                   <p className="font-num text-2xl leading-none">{item.value}</p>
